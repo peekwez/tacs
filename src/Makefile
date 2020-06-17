@@ -23,6 +23,9 @@ CXX_OBJS := $(CXX_OBJS:%=$(DIR)/%)
 default: ${CXX_OBJS}
 	${AR} ${AR_FLAGS} ${TACS_LIB} ${CXX_OBJS}
 
+%.o: %.c
+	${CXX} ${CCFLAGS} -c $< -o $@
+
 debug: TACS_CC_FLAGS=${TACS_DEBUG_CC_FLAGS}
 debug: default
 
